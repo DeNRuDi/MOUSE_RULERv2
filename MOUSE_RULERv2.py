@@ -45,8 +45,7 @@ def measure_by_laser(): # 2 пункт
 		print("Твой результат ~ ",end='') 
 		print(str(value.count) + " Cм",end='\r')
 
-#	with keyboard.Listener(on_press=on_press) as listener:
-#		listener.join()
+		
 if __name__ == "__main__":
 	try:
 		print("\nMOUSE_RULER v2.0\nCopyright © 2020 DeNRuDi (Denis Rudnitskiy)\n")
