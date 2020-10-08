@@ -1,0 +1,66 @@
+import os
+import time
+import pyautogui
+from pynput import mouse, keyboard
+
+
+class Values:
+	"""Клас для определения параметров"""
+	def __init__(self, resolution_x, resolution_y):
+		self.i = 1
+		self.count = 0
+		self.resolution_x = resolution_x
+		self.resolution_y = resolution_y
+		pyautogui.FAILSAFE = False
+
+		
+value = Values(1920,1080)	
+
+	
+def measure_by_wheel(): # 1 пункт
+	def on_press(key):
+		if key == keyboard.Key.esc:
+			return False	
+	
+	def on_scroll(x, y, dx, dy):
+		print(value.i, end='\r')
+		value.i+=1
+		
+	with mouse.Listener(on_scroll=on_scroll), keyboard.Listener(on_press=on_press) as listener:
+		listener.join()
+	result = float(value.i - 1) / 3.4
+	print("Твой результат: " + str(round((result),1)) + " Cм\n")
+	
+	
+def measure_by_laser(): # 2 пункт
+	print("Выход - 'CTRL + C'")
+	while True:
+		x,y = pyautogui.position()
+		if x <= 549 or x >= 551:
+			pyautogui.moveTo(550, y)
+		if x >= value.resolution_x - 100 or y >= value.resolution_y - 100:
+			pyautogui.moveTo(550, 0)
+			value.count += 2
+		time.sleep(0.1)
+		print("Твой результат ~ ",end='') 
+		print(str(value.count) + " Cм",end='\r')
+
+#	with keyboard.Listener(on_press=on_press) as listener:
+#		listener.join()
+if __name__ == "__main__":
+	try:
+		print("\nMOUSE_RULER v2.0\nCopyright © 2020 DeNRuDi (Denis Rudnitskiy)\n")
+		answer = input("[1]Измерить предмет колёсиком мыши\n[2]Измерить предмет лазером мыши\n[3]Выход\n\nВведите ответ>")
+		if answer == str(1):
+			i = 1
+			print("После измерения, нажмите - 'ESC'")
+			measure_by_wheel()
+		elif answer == str(2):
+			pyautogui.moveTo(250, 0)
+			measure_by_laser()
+		elif answer == str(3):
+			exit(0)
+		else:
+			print("\nВведен неверный ответ!\n")
+	except KeyboardInterrupt:
+		print('\nВыход')		
