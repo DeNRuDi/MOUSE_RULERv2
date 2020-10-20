@@ -36,11 +36,11 @@ def measure_by_wheel(): # 1 пункт
 def measure_by_laser(): # 2 пункт
 	print("Выход - 'CTRL + C'")
 	while True:
-		x,y = pyautogui.position()
-		if x <= 549 or x >= 551:
-			pyautogui.moveTo(550, y)
+		x, y = pyautogui.position()
+		if x <= int(value.resolution_x / 3.495) or x >=  int(value.resolution_x / 3.48):
+			pyautogui.moveTo((value.resolution_x / 3.49), y)
 		if x >= value.resolution_x - 100 or y >= value.resolution_y - 100:
-			pyautogui.moveTo(550, 0)
+			pyautogui.moveTo(int(value.resolution_x / 3.49), 0)
 			value.count += 2
 		time.sleep(0.1)
 		print("Твой результат ~ ", end='') 
