@@ -14,7 +14,8 @@ class Values:
 		pyautogui.FAILSAFE = False
 
 		
-value = Values(1920,1080)	
+x, y = pyautogui.size()		
+value = Values(x, y)		
 
 	
 def measure_by_wheel(): # 1 пункт
@@ -42,13 +43,13 @@ def measure_by_laser(): # 2 пункт
 			pyautogui.moveTo(550, 0)
 			value.count += 2
 		time.sleep(0.1)
-		print("Твой результат ~ ",end='') 
-		print(str(value.count) + " Cм",end='\r')
+		print("Твой результат ~ ", end='') 
+		print(str(value.count) + " Cм", end='\r')
 
 		
 if __name__ == "__main__":
 	try:
-		print("\nMOUSE_RULER v2.0\nCopyright © 2020 DeNRuDi (Denis Rudnitskiy)\n")
+		print("\nMOUSE_RULER v2.1\nCopyright © 2020 DeNRuDi (Denis Rudnitskiy)\n")
 		answer = input("[1]Измерить предмет колёсиком мыши\n[2]Измерить предмет лазером мыши\n[3]Выход\n\nВведите ответ>")
 		if answer == str(1):
 			i = 1
