@@ -39,7 +39,7 @@ def measure_by_laser(): # 2 пункт
 		x, y = pyautogui.position()
 		if x <= int(value.resolution_x / 3.495) or x >=  int(value.resolution_x / 3.48):
 			pyautogui.moveTo((value.resolution_x / 3.49), y)
-		if x >= value.resolution_x - 100 or y >= value.resolution_y - 100:
+		if y >= value.resolution_y - 50:
 			pyautogui.moveTo(int(value.resolution_x / 3.49), 0)
 			value.count += 2
 		time.sleep(0.1)
