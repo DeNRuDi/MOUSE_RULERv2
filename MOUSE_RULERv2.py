@@ -1,8 +1,6 @@
-import os
-import time
 import pyautogui
 from pynput import mouse, keyboard
-
+from time import sleep
 
 class Values:
 	"""Клас для определения параметров"""
@@ -42,7 +40,7 @@ def measure_by_laser(): # 2 пункт
 		if y >= value.resolution_y - 50:
 			pyautogui.moveTo(int(value.resolution_x / 3.49), 0)
 			value.count += 2
-		time.sleep(0.1)
+		sleep(0.1)
 		print("Твой результат ~ ", end='') 
 		print(str(value.count) + " Cм", end='\r')
 
