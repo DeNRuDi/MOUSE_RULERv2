@@ -3,7 +3,7 @@ from pynput import mouse, keyboard
 from time import sleep
 
 class Values:
-	"""Клас для определения параметров"""
+	"""Класс для определения параметров"""
 	def __init__(self, resolution_x, resolution_y):
 		self.i = 1
 		self.count = 0
@@ -50,7 +50,6 @@ if __name__ == "__main__":
 		print("\nMOUSE_RULER v2.1\nCopyright © 2020 DeNRuDi (Denis Rudnitskiy)\n")
 		answer = input("[1]Измерить предмет колёсиком мыши\n[2]Измерить предмет лазером мыши\n[3]Выход\n\nВведите ответ>")
 		if answer == str(1):
-			i = 1
 			print("После измерения, нажмите - 'ESC'")
 			measure_by_wheel()
 		elif answer == str(2):
